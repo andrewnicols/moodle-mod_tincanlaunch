@@ -19,7 +19,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php: ['7.4', '8.0']
+        php: ['8.0']
         moodle-branch: ['MOODLE_311_STABLE', 'MOODLE_400_STABLE', 'MOODLE_401_STABLE', 'master']
         database: [pgsql]
 
@@ -60,4 +60,8 @@ jobs:
 
       - name: Diff
         if: ${{ always() }}
-        run: git diff; cat amd/build/*
+        run: cd /home/runner/work/moodle-mod_tincanlaunch/moodle-mod_tincanlaunch/moodle/mod/tincanlaunch ; git diff; cat amd/build/*
+
+      - name: Diff
+        if: ${{ always() }}
+        run: cd plugin ; git diff; cat amd/build/*
